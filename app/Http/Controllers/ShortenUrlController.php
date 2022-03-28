@@ -36,7 +36,7 @@ class ShortenUrlController extends Controller
 
         ShortenUrl::create($input);
 
-        return redirect('generate-shorten-url')
+        return redirect('/')
             ->with('success', 'Shorten Link Generated Successfully!');
     }
 

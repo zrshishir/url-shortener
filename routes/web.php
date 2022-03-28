@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('generate-shorten-url', 'App\Http\Controllers\ShortenUrlController@index');
+Route::get('/', 'App\Http\Controllers\ShortenUrlController@index');
 Route::post('generate-shorten-url', 'App\Http\Controllers\ShortenUrlController@store')->name('generate.shorten.url.post');
 
 Route::get('{code}', 'App\Http\Controllers\ShortenUrlController@shortenUrl')->name('shorten.url');

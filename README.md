@@ -58,64 +58,37 @@ $ composer install
          DB_PASSWORD=your_password
     ````
   if it is MAMP then add DB_SOCKET also
-    ``DB_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock``
+    ```DB_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock```
 
 - Migrate the application
 
   ```$ php artisan migrate```
 
-- Install laravel passport
-
-  ```$ php artisan passport:install```
-
-- Seed Database
-
-  ```$ php artisan db:seed```
-
-
-- Install node modules
-
-  ```$ npm install```
-
-
 ### Run the application
 
 ```$ php artisan serve```
 
-
-## Built With
-* [Laravel](https://laravel.com) - The PHP framework for building the API endpoints needed for the application
-* [Vue](https://vuejs.org) - The Progressive JavaScript Framework for building interactive interfaces
-
-
-##### Installation
-The installation is pretty simple. You will have php version 7.3+ and Vue js version 3.0 thats it. Below, the details installation is being described.
-
-1.LEMP stack installation:
-    - Make ready your linux with nginx, mysql and php. You can follow the link [LEMP stack installation on ubunut 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-ubuntu-18-04)
-    - Create a database on your phpmyadmin or mysql
-    - Import the url-shortener.sql (it is in the root directory) file into your database.
-    - Set your database credentials in DatabaseConnection.php file  which is in app/controller directory and edit $host, $user, $password and $database with you own credentials.
-    - Now open your browser, write your domain name and execute the index.php file which is in your project root directory.
-
-
-##### Project features:
-    - Url shortening task
-
-
-##### Done Tasks:
-1. Create a MySQL DB table with the following requirements and a frontend submission form for storing the data. The - field/Column list are:
-    - id (bigint 20) ai
-    - code (varchar 255) 
-    - link (varchar 255) *
-    - entry_at (date)
-    - entry_by (init 10)
-
-2. * marked columns must submit through the mentioned frontend form.
+### Project features:
+- Url shortening task
+- Create a form, that allows adding URL and system generates short unique URL:
+  - The format of generated URL: example.com/[hash];
+  - The short URL must be a valid URL;
+  - The URL must be shortened till 6 symbols hash, which contains alphanumeric symbols;
+  - Algorithm must recognize duplicate URL and instead of generating new short URL, show previously
+  created;
+  - Upon submit, the URL should be checked using the „Google Safe Browsing“ API
+  (https://developers.google.com/safe-browsing/v4/lookup-api). Or any other API with the same
+  function. 
+- After implementation, upon opening the short URL, the user must be redirected to the original URL.
+- Advantage, if functionality could work from folder (e.g.: example.com/something/[hash]).
+- For implementation use Laravel and Vue.js.
 
 #### Screenshots
 Main Page
 ![Main page](/resources/image/home_page.png)
 
+### Built With
+* [Laravel](https://laravel.com) - The PHP framework for building the API endpoints needed for the application
+* [Vue](https://vuejs.org) - The Progressive JavaScript Framework for building interactive interfaces
 
 #### NB: If you face any issue, please inform me. 
