@@ -1,65 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Url Shortener using Laravel and vue js
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+##### tech specifications
+    - php version ^7.3|^8.0
+    - laravel ^8.75
+    - Vue 3.0
+    - Bootstrap
+    - HTML and CSS 
 
-## Url Shortener
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+##### Installation
+The installation is pretty simple. There is nothing like composer update. You will have php version 7.4 and jQuery version 3.5.0 thats it. Below, the details installation is being described.
+1. XAMPP installation:
+- Go to your htdocs directory of your xampp folder and clone the project from github direcotory to your xampp htdocs directory using the following command for https.
+  ``git clone git@github.com:zrshishir/php-form-submission.git``
+- Create a database on your phpmyadmin or mysql
+- Import the `form-submission.sql` (it is in the root directory) file into your database.
+    - Set your database credentials in `DatabaseConnection.php` file  which is in app/controller directory and edit $host, $user, $password and $database with you own credentials:
+        ````
+         private $host = 'localhost';
+         private $user = 'root';
+         private $password = 'your password';
+         private $database = 'database name';
+        ````
+- Now open your browser and execute the index.php file which is in your project root directory.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. LEMP stack installation:
+    - Make ready your linux with nginx, mysql and php. You can follow the link [LEMP stack installation on ubunut 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-ubuntu-18-04)
+    - Create a database on your phpmyadmin or mysql
+    - Import the form-submission.sql (it is in the root directory) file into your database.
+    - Set your database credentials in DatabaseConnection.php file  which is in app/controller directory and edit $host, $user, $password and $database with you own credentials.
+    - Now open your browser, write your domain name and execute the index.php file which is in your project root directory.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+##### Project features:
+    - Maintaining mvc pattern
+    - User's browser ip automatically taken when submiting the form
+    - Encryption receipt id with proper salt and using sha-512
+    - taking local time zone at entry time
+    - Back end validation
+    - Front end validation
+    - Form submission with ajax and php (for php form submission you need some edition in the code)
+    - Preventing users from multiple submissions within 24 hours using cookie
+    - Including search opton with entry_by, from date and to date
+    - Integrating the ajax response with resetting the form value
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+##### Done Tasks:
+1. Create a MySQL DB table with the following requirements and a frontend submission form for storing the data. The - field/Column list are:
+    - id (bigint 20) ai
+    - code (varchar 255) *
+    - link (varchar 255) *
+    - entry_at (date)
+    - entry_by (init 10) *
 
-## Laravel Sponsors
+2. * marked columns can be submitted through the mentioned frontend form.
+3. Buyer_ip should be the user’s browser ip and will be automatically filled up from backend.
+4. Hash_key is the encrypted string of ‘receipt_id’ and a proper ‘salt’ using sha-512.
+5. Entry_at is the submission date in local timezone.
+6. There will be two types of validation process according to the following requirements: A) frontend validation (with js entirely), B) backend validation.
+    - Amount: only numbers.
+    - Buyer: only text, spaces and numbers, not more than 20 characters.
+    - Receipt_id: only text.
+    - Items: only text, user should be able to add multiple items (use js based interface).
+    - Buyer_email: only emails.
+    - Note: anything, not more than 30 words, and can be input unicode characters too.
+    - City: only text and spaces.
+    - Phone: only numbers, and 880 will be automatically prepended via js in an appropriate manner.
+    - Entry_by: only numbers.
+7. The submission must be handled by jquery ajax.
+8. Using cookie, prevent users from multiple submissions within 24 hours.
+9. Create a simple report page where users can see all the submissions and filter it by date range and/ or user id.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#### Screenshots
+Main Page
+![Main page](/resources/image/home_page.png)
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# url-shortener
+#### NB: If you face any issue, please inform me. 
