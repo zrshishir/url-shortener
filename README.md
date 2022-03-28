@@ -7,19 +7,48 @@
     - Bootstrap
     - HTML and CSS 
 
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-##### Installation
-The installation is pretty simple. You will have php version 7.3+ and Vue js version 3.0 thats it. Below, the details installation is being described.
-1. XAMPP installation:
-- Go to your htdocs directory of your xampp folder and clone the project from github direcotory to your xampp htdocs directory using the following command for https.
-  ``git clone git@github.com:zrshishir/url-shortener.git``
-- go to your project directory by using command ``cd directory_name``
-- Now update your composer using the following command
-  ``composer update``
-- Create a database on your phpmyadmin or mysql
-- Import the `url_shortener.sql` (it is in the root directory) file into your database.
-    - Set your database credentials in `.env` file  which is in the root directory if not please copy and rename the .env.example file and edit  with you own credentials:
-        ````
+### Prerequisites
+What things you need to install the software.
+
+* Git.
+* PHP.
+* Composer.
+* Laravel CLI.
+* A webserver like Nginx or Apache.
+* A Node Package Manager ( npm or yarn ).
+
+### Install
+Clone the git repository on your computer
+
+```$ git clone git@github.com:zrshishir/url-shortener.git```
+
+
+You can also download the entire repository as a zip file and unpack in on your computer if you do not have git
+
+After cloning the application, you need to install it's dependencies.
+
+```
+$ cd url-shortener
+$ composer install
+```
+
+
+### Setup
+- When you are done with installation, copy the `.env.example` file to `.env`
+
+  ```$ cp .env.example .env```
+
+
+- Generate the application key
+
+  ```$ php artisan key:generate```
+
+
+- Add your database credentials to the necessary `env` fields
+    ````
          DB_CONNECTION=mysql
          DB_CONNECTION=mysql
          DB_HOST=127.0.0.1
@@ -27,13 +56,45 @@ The installation is pretty simple. You will have php version 7.3+ and Vue js ver
          DB_DATABASE=your_database_name
          DB_USERNAME=your_user_name
          DB_PASSWORD=your_password
-        ````
-- Now open your browser and execute the index.php file which is in your project root directory.
+    ````
+  if it is MAMP then add DB_SOCKET also
+    ``DB_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock``
 
-2. LEMP stack installation:
+- Migrate the application
+
+  ```$ php artisan migrate```
+
+- Install laravel passport
+
+  ```$ php artisan passport:install```
+
+- Seed Database
+
+  ```$ php artisan db:seed```
+
+
+- Install node modules
+
+  ```$ npm install```
+
+
+### Run the application
+
+```$ php artisan serve```
+
+
+## Built With
+* [Laravel](https://laravel.com) - The PHP framework for building the API endpoints needed for the application
+* [Vue](https://vuejs.org) - The Progressive JavaScript Framework for building interactive interfaces
+
+
+##### Installation
+The installation is pretty simple. You will have php version 7.3+ and Vue js version 3.0 thats it. Below, the details installation is being described.
+
+1.LEMP stack installation:
     - Make ready your linux with nginx, mysql and php. You can follow the link [LEMP stack installation on ubunut 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-ubuntu-18-04)
     - Create a database on your phpmyadmin or mysql
-    - Import the form-submission.sql (it is in the root directory) file into your database.
+    - Import the url-shortener.sql (it is in the root directory) file into your database.
     - Set your database credentials in DatabaseConnection.php file  which is in app/controller directory and edit $host, $user, $password and $database with you own credentials.
     - Now open your browser, write your domain name and execute the index.php file which is in your project root directory.
 
