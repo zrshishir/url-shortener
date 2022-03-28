@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ShortenUrl;
+use Illuminate\Support\Str;
 
 class ShortenUrlController extends Controller
 {
@@ -31,7 +32,7 @@ class ShortenUrlController extends Controller
         ]);
 
         $input['link'] = $request->link;
-        $input['code'] = str_random(6);
+        $input['code'] = Str::random(6);
 
         ShortenUrl::create($input);
 
@@ -44,7 +45,7 @@ class ShortenUrlController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function shortenLink($code)
+    public function shortenUrl($code)
     {
         $find = ShortenUrl::where('code', $code)->first();
 
