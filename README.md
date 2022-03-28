@@ -9,18 +9,24 @@
 
 
 ##### Installation
-The installation is pretty simple. There is nothing like composer update. You will have php version 7.4 and jQuery version 3.5.0 thats it. Below, the details installation is being described.
+The installation is pretty simple. You will have php version 7.3+ and Vue js version 3.0 thats it. Below, the details installation is being described.
 1. XAMPP installation:
 - Go to your htdocs directory of your xampp folder and clone the project from github direcotory to your xampp htdocs directory using the following command for https.
-  ``git clone git@github.com:zrshishir/php-form-submission.git``
+  ``git clone git@github.com:zrshishir/url-shortener.git``
+- go to your project directory by using command ``cd directory_name``
+- Now update your composer using the following command
+  ``composer update``
 - Create a database on your phpmyadmin or mysql
-- Import the `form-submission.sql` (it is in the root directory) file into your database.
-    - Set your database credentials in `DatabaseConnection.php` file  which is in app/controller directory and edit $host, $user, $password and $database with you own credentials:
+- Import the `url_shortener.sql` (it is in the root directory) file into your database.
+    - Set your database credentials in `.env` file  which is in the root directory if not please copy and rename the .env.example file and edit  with you own credentials:
         ````
-         private $host = 'localhost';
-         private $user = 'root';
-         private $password = 'your password';
-         private $database = 'database name';
+         DB_CONNECTION=mysql
+         DB_CONNECTION=mysql
+         DB_HOST=127.0.0.1
+         DB_PORT=3306
+         DB_DATABASE=your_database_name
+         DB_USERNAME=your_user_name
+         DB_PASSWORD=your_password
         ````
 - Now open your browser and execute the index.php file which is in your project root directory.
 
@@ -33,43 +39,18 @@ The installation is pretty simple. There is nothing like composer update. You wi
 
 
 ##### Project features:
-    - Maintaining mvc pattern
-    - User's browser ip automatically taken when submiting the form
-    - Encryption receipt id with proper salt and using sha-512
-    - taking local time zone at entry time
-    - Back end validation
-    - Front end validation
-    - Form submission with ajax and php (for php form submission you need some edition in the code)
-    - Preventing users from multiple submissions within 24 hours using cookie
-    - Including search opton with entry_by, from date and to date
-    - Integrating the ajax response with resetting the form value
+    - Url shortening task
 
 
 ##### Done Tasks:
 1. Create a MySQL DB table with the following requirements and a frontend submission form for storing the data. The - field/Column list are:
     - id (bigint 20) ai
-    - code (varchar 255) *
+    - code (varchar 255) 
     - link (varchar 255) *
     - entry_at (date)
-    - entry_by (init 10) *
+    - entry_by (init 10)
 
-2. * marked columns can be submitted through the mentioned frontend form.
-3. Buyer_ip should be the user’s browser ip and will be automatically filled up from backend.
-4. Hash_key is the encrypted string of ‘receipt_id’ and a proper ‘salt’ using sha-512.
-5. Entry_at is the submission date in local timezone.
-6. There will be two types of validation process according to the following requirements: A) frontend validation (with js entirely), B) backend validation.
-    - Amount: only numbers.
-    - Buyer: only text, spaces and numbers, not more than 20 characters.
-    - Receipt_id: only text.
-    - Items: only text, user should be able to add multiple items (use js based interface).
-    - Buyer_email: only emails.
-    - Note: anything, not more than 30 words, and can be input unicode characters too.
-    - City: only text and spaces.
-    - Phone: only numbers, and 880 will be automatically prepended via js in an appropriate manner.
-    - Entry_by: only numbers.
-7. The submission must be handled by jquery ajax.
-8. Using cookie, prevent users from multiple submissions within 24 hours.
-9. Create a simple report page where users can see all the submissions and filter it by date range and/ or user id.
+2. * marked columns must submit through the mentioned frontend form.
 
 #### Screenshots
 Main Page
